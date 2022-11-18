@@ -1,0 +1,57 @@
+practical p9
+#include<stdio.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<stdlib.h>
+#include<fcntl.h>
+#include<string.h>
+int main(){
+int fd, ch;
+char fname[25];
+char buffer[80];
+size_t ret_in, ret_out;
+char message[100];
+do{
+printf("1.Create File\n");
+printf("2.Write\n");
+printf("3.Read\n");
+printf("4.Exit\n");
+printf("Enter your choice\t");
+scanf("%d", &ch);
+if(ch==1){
+printf("Enter File Name\t");
+scanf("%s",fname);
+fd=creat(fname,S_IREAD| S_IWRITE);
+if(fd==-1)
+printf("Error in Opening file %s\n",fname);
+else{
+printf("File %s is opened read/write access\n",fname);
+printf("%s is currently empty\n",fname);
+}
+}
+if(ch==2){
+printf("Enter file name\t");
+scanf("%s",&fname[25]);
+fd=open(fname,O_WRONLY,1);
+if(fd!=-1)
+{printf("file %s opened write access\n",fname);
+printf("Enter Data\t");
+scanf("%s",&message[100]);
+}
+}
+if(ch==3)
+{printf ("Enter file name\t");
+scanf("%s",&fname[25]);
+fd=open(fname,O_RDONLY,0);
+if(fd!=-1){
+printf("%s opened read access\n",fname);
+if(sizeof(buffer))
+printf("%s %s",buffer,fname);
+else
+printf("Error reading %s",fname);
+}
+}
+}
+while(ch!=4);
+exit(0);
+}
